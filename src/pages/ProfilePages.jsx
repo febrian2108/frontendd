@@ -15,21 +15,30 @@ export default function ProfilePages() {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
+                const token = localStorage.getItem("token");
+                if (!token) {
+                    throw new Error("No authentication token found");
+                }
+
                 const response = await fetch("https://backend-beta-one-34.vercel.app/profile", {
                     headers: {
-                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                        Authorization: `Bearer ${token}`,
                     },
                 });
 
-                if (!response.ok) throw new Error("Gagal mengambil data profil");
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || "Failed to fetch profile data");
+                }
 
                 const data = await response.json();
-                setUsername(data.username);
-                setEmail(data.email);
-                setAge(data.age);
-                setCountry(data.country);
+                setUsername(data.username || "");
+                setEmail(data.email || "");
+                setAge(data.age || "");
+                setCountry(data.country || "");
             } catch (err) {
-                setErrorMessage(err.message);
+                console.error("Profile fetch error:", err);
+                setErrorMessage(err.message || "Failed to load profile data");
             }
         };
 
@@ -42,13 +51,17 @@ export default function ProfilePages() {
         setSuccessMessage("");
         setErrorMessage("");
 
-        // Simulasi pengiriman data ke server
-       try {
+        try {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                throw new Error("No authentication token found");
+            }
+
             const response = await fetch("https://backend-beta-one-34.vercel.app/profile/edit", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    Authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify({
                     username,
@@ -58,18 +71,16 @@ export default function ProfilePages() {
                 }),
             });
 
-            if (!response.ok) {
-                throw new Error("Failed to update profile");
-            }
-
             const data = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.message || "Update failed");
+                throw new Error(data.message || "Failed to update profile");
             }
+
             setSuccessMessage(data.message || "Profile updated successfully!");
         } catch (error) {
-            setErrorMessage(error.message);
+            console.error("Profile update error:", error);
+            setErrorMessage(error.message || "Failed to update profile");
         } finally {
             setLoading(false);
         }
@@ -97,10 +108,9 @@ export default function ProfilePages() {
 
                     <h2 className="text-2xl font-semibold mb-6">Details Profile</h2>
 
-                    
+                    {loading && <p className="text-blue-600 mb-4">Loading...</p>}
                     {successMessage && <p className="text-green-600 mb-4">{successMessage}</p>}
                     {errorMessage && <p className="text-red-600 mb-4">{errorMessage}</p>}
-
 
                     <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
