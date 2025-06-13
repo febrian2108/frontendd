@@ -28,7 +28,7 @@ export default function LoginPages() {
         }
 
         try {
-            const response = await fetch("https://backend-beta-one-34.vercel.app/login", {
+            const response = await fetch("http://localhost:9000/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -120,15 +120,12 @@ export default function LoginPages() {
                             </p>
                         </div>
                     </div>
-
                     <div className="w-1/2 md:block hidden">
-                        <div className="absolute inset-0 overflow-hidden">
-                            <img
-                                src="/assets/the-cinema.jpeg"
-                                alt="background"
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
+                        <img
+                            src="/assets/the-cinema.jpeg"
+                            className="rounded-2xl"
+                            alt="page img"
+                        />
                     </div>
                 </div>
             </section>
