@@ -120,7 +120,7 @@ export default function HomePages() {
             <section className="relative flex justify-center items-center w-full h-full">
                 <div className="absolute inset-0 overflow-hidden">
                     <img
-                        src="./src/assets/panggung.jpg"
+                        src="./public/assets/panggung.jpg"
                         alt="background-netflix"
                         className="w-full h-full object-cover"
                     />

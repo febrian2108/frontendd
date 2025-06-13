@@ -61,7 +61,7 @@ export default function OutputPages() {
       <Navbar />
       <div className="fixed inset-0 -z-10">
         <img
-          src="/src/assets/background-netflix.jpg"
+          src="/public/assets/background-netflix.jpg"
           alt="background"
           className="w-full h-full object-cover"
         />

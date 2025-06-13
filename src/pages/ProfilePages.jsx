@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import backgroundImg from "../assets/panggung.jpg";
 import { useState, useEffect} from "react";
 
 export default function ProfilePages() {
@@ -83,7 +82,7 @@ export default function ProfilePages() {
                 {/* Background Image */}
                 <div className="absolute inset-0 z-[-1]">
                     <img
-                        src={backgroundImg}
+                        src="./public/assets/panggung.jpg"
                         alt="background panggung"
                         className="w-full h-full object-cover"
                     />

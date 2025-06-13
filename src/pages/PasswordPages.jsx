@@ -56,7 +56,7 @@ const PasswordPages = () => {
                 {/* Background Image */}
                 <div className="absolute inset-0 z-[-1]">
                     <img
-                        src="./src/assets/panggung.jpg"
+                        src="./public/assets/panggung.jpg"
                         alt="background panggung"
                         className="w-full h-full object-cover"
                     />

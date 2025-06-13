@@ -10,7 +10,7 @@ export default function AboutApps() {
             <section className="relative flex justify-center items-center w-full h-full">
                 <div className="absolute inset-0 overflow-hidden">
                     <img
-                        src="./src/assets/popcorn-background-cinema-concept.jpg"
+                        src="./public/assets/popcorn-background-cinema-concept.jpg"
                         alt="background-netflix"
                         className="w-full h-full object-cover"
                     />

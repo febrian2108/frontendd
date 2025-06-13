@@ -74,7 +74,7 @@ export default function RegisterPages() {
         <div>
             <section className="min-h-screen flex items-center justify-center relative">
                 <img
-                    src="src/assets/background-netflix.jpg"
+                    src="public/assets/background-netflix.jpg"
                     alt="background-netflix"
                     className="absolute inset-0 w-full h-full object-cover -z-10"
                 />
