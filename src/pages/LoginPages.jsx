@@ -12,6 +12,7 @@ export default function LoginPages() {
 
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,14 +22,18 @@ export default function LoginPages() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
+        setError("");
+        setSuccess("");
 
         if (formData.email === "" || formData.password === "") {
             setError("Email dan password wajib diisi.");
+            setLoading(false);
             return;
         }
 
         try {
-            const response = await fetch("http://localhost:9000/login", {
+            const response = await fetch("https://backend-beta-one-34.vercel.app/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -39,20 +44,22 @@ export default function LoginPages() {
             const data = await response.json();
 
             if (!response.ok) {
-                setError(data.error || "Terjadi kesalahan.");
-            } else {
-                setSuccess(data.message);
-                localStorage.setItem("token", data.token);
-                setFormData({
-                    email: "",
-                    password: "",
-                });
-
-                navigate("/");
+                throw new Error(data.error || "Terjadi kesalahan saat login.");
             }
+
+            setSuccess(data.message || "Login berhasil!");
+            localStorage.setItem("token", data.token);
+            setFormData({
+                email: "",
+                password: "",
+            });
+
+            navigate("/");
         } catch (error) {
             console.error("Login error:", error);
-            setError("Gagal terhubung ke server.");
+            setError(error.message || "Gagal terhubung ke server.");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -83,6 +90,7 @@ export default function LoginPages() {
                                     autoFocus
                                     autoComplete="email"
                                     required
+                                    disabled={loading}
                                 />
                             </div>
 
@@ -97,6 +105,7 @@ export default function LoginPages() {
                                     onChange={handleChange}
                                     className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-red-500 focus:bg-white focus:outline-none"
                                     required
+                                    disabled={loading}
                                 />
                             </div>
 
@@ -105,9 +114,10 @@ export default function LoginPages() {
 
                             <button
                                 type="submit"
-                                className="w-full block bg-[#db0000] hover:bg-red-600 focus:bg-red-400 text-white font-semibold rounded-lg px-4 py-3 mt-6"
+                                className="w-full block bg-[#db0000] hover:bg-red-600 focus:bg-red-400 text-white font-semibold rounded-lg px-4 py-3 mt-6 disabled:opacity-50 disabled:cursor-not-allowed"
+                                disabled={loading}
                             >
-                                Log In
+                                {loading ? "Logging in..." : "Log In"}
                             </button>
                         </form>
 
