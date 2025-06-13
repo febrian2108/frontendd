@@ -115,10 +115,10 @@ export default function QuestionPages() {
 
   return (
     <main className="relative min-h-screen flex flex-col text-white">
-      <div className="fixed inset-0 -z-10">
+      <div className="absolute inset-0 overflow-hidden">
         <img
-          src="./public/assets/background-netflix.jpg"
-          alt="background-netflix"
+          src="/assets/background-netflix.jpg"
+          alt="background"
           className="w-full h-full object-cover"
         />
       </div>

@@ -6,11 +6,11 @@ import DecryptedText from '../components/TextAbout';
 export default function AboutApps() {
     return (
         <div className="bg-gray-400">
-                    <Navbar />
+            <Navbar />
             <section className="relative flex justify-center items-center w-full h-full">
                 <div className="absolute inset-0 overflow-hidden">
                     <img
-                        src="./public/assets/popcorn-background-cinema-concept.jpg"
+                        src="/assets/popcorn-background-cinema-concept.jpg"
                         alt="background-netflix"
                         className="w-full h-full object-cover"
                     />

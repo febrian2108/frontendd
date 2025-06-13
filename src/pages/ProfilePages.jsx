@@ -80,10 +80,10 @@ export default function ProfilePages() {
             <Navbar />
             <section className="relative flex justify-center items-center w-full min-h-screen">
                 {/* Background Image */}
-                <div className="absolute inset-0 z-[-1]">
+                <div className="absolute inset-0 overflow-hidden">
                     <img
-                        src="./public/assets/panggung.jpg"
-                        alt="background panggung"
+                        src="/assets/panggung.jpg"
+                        alt="background"
                         className="w-full h-full object-cover"
                     />
                 </div>

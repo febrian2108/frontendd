@@ -59,11 +59,13 @@ export default function LoginPages() {
     return (
         <div>
             <section className="min-h-screen flex items-center justify-center relative">
-                <img
-                    src="public/assets/background-netflix.jpg"
-                    alt="background-netflix"
-                    className="absolute inset-0 w-full h-full object-cover -z-10"
-                />
+                <div className="absolute inset-0 overflow-hidden">
+                    <img
+                        src="/assets/background-netflix.jpg"
+                        alt="background"
+                        className="w-full h-full object-cover"
+                    />
+                </div>
 
                 <div className="bg-black bg-opacity-85 p-5 flex rounded-2xl shadow-lg max-w-3xl z-10">
                     <div className="md:w-1/2 px-5">
@@ -120,11 +122,13 @@ export default function LoginPages() {
                     </div>
 
                     <div className="w-1/2 md:block hidden">
-                        <img
-                            src="src/assets/the-cinema.jpeg"
-                            className="rounded-2xl"
-                            alt="page img"
-                        />
+                        <div className="absolute inset-0 overflow-hidden">
+                            <img
+                                src="/assets/the-cinema.jpeg"
+                                alt="background"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
                     </div>
                 </div>
             </section>
