@@ -146,9 +146,9 @@ export default function ProfilePages() {
                             />
                         </div>
 
-                        <div>
+                        <div className="mt-2">
                             <label className="block text-gray-700">Country of Origin</label>
-                            <select className="mt-1 p-2 w-full border border-gray-300 rounded" value={country} onChange={(e) => setCountry(e.target.value)}>
+                            <select defaultValue={country} className="mt-1 p-2 w-full border border-gray-300 rounded" value={country} onChange={(e) => setCountry(e.target.value)}>
                                 <option value="">Choose Country</option>
                                 <option value="AF">Afghanistan</option>
                                 <option value="AL">Albania</option>
