@@ -59,7 +59,7 @@ export default function OutputPages() {
   return (
     <main className="relative min-h-screen flex flex-col text-white">
       <Navbar />
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="fixed inset-0 -z-10">
         <img
           src="/assets/background-netflix.jpg"
           alt="background"
@@ -86,9 +86,6 @@ export default function OutputPages() {
 
         <div className="mt-8 flex gap-4">
           <Link to="/" className="bg-gray-500 px-4 py-2 rounded">Back Home</Link>
-          <button onClick={() => window.location.reload()} className="bg-blue-700 px-4 py-2 rounded">
-            Refresh
-          </button>
         </div>
       </div>
 
